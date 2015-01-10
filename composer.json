@@ -1,7 +1,7 @@
 {
 	"name": "martin/emptypostsubjects",
 	"type": "phpbb-extension",
-	"description": "TODO Empties the 'Subject' when replying to a topic, i.e. no more 'Re: <topic title>' subjects for every post. Also empties the 'Subject' if the Quick Reply feature is active. Customize if the Last Post link on the board index displays the subject of the last post, the title of the topic containing the last post, or the post subject if it is not empty and the topic title otherwise.",
+	"description": "Empties the 'Subject' when (quick) replying to a topic. Modifies the text of the Last Post link on the board index or when viewing a forum to handle empty post subjects. Also modifies the search result titles to handle empty post subjects.",
 	"homepage": "https://github.com/Martin-G-/EmptyPostSubjects",
 	"version": "1.0.0-beta1",
 	"time": "2015-01-10",

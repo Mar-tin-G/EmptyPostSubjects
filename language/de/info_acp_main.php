@@ -27,7 +27,9 @@ $lang = array_merge($lang, array(
 	'ACP_EMPTYPOSTSUBJECTS_QUICK_REPLY_EXPLAIN'										=> 'Leert das \'Betreff\'-Feld im Schnellantwort-Editor beim Betrachten eines Themas.',
 	'ACP_EMPTYPOSTSUBJECTS_LAST_POST'												=> 'Link zum Letzten Beitrag zeigt',
 	'ACP_EMPTYPOSTSUBJECTS_LAST_POST_EXPLAIN'										=> 'Welchen Text soll der Link zum \'Letzten Beitrag\' auf der Indexseite anzeigen?',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_LAST_POST_SUBJECT			=> 'Betreff des letzten Beitrags',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE					=> 'Betreff des Themas, das den letzten Beitrag enthält',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY	=> 'Betreff des letzten Beitrags, wenn dieser nicht leer ist; ansonsten Betreff des Themas',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT				=> 'Betreff des Beitrags',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE					=> 'Betreff des Themas, das den Beitrag enthält',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY	=> 'Betreff des Beitrags, wenn dieser nicht leer ist; ansonsten Betreff des Themas',
+	'ACP_EMPTYPOSTSUBJECTS_SEARCH'													=> 'Titel in den Suchergebnissen zeigen',
+	'ACP_EMPTYPOSTSUBJECTS_SEARCH_EXPLAIN'											=> 'Welchen Text sollen die Titel der Suchergebnisse zeigen?',
 ));

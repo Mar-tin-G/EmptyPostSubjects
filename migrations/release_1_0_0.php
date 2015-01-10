@@ -25,9 +25,10 @@ class release_1_0_0 extends \phpbb\db\migration\migration
 	{
 		return array(
 			array('config.add', array('martin_emptypostsubjects_version', '1.0.0')),
-			array('config.add', array('martin_emptypostsubjects_last_post', 0)),
 			array('config.add', array('martin_emptypostsubjects_empty_reply', 0)),
 			array('config.add', array('martin_emptypostsubjects_empty_quick_reply', 0)),
+			array('config.add', array('martin_emptypostsubjects_last_post', 0)),
+			array('config.add', array('martin_emptypostsubjects_search', 0)),
 
 			array('module.add', array(
 				'acp',

@@ -22,12 +22,13 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
+			'core.user_setup'							=> 'define_constants',
 			'core.posting_modify_template_vars'			=> 'remove_subject_reply',
 			'core.viewtopic_modify_page_title'			=> 'remove_subject_quick_reply',
-			'core.user_setup'							=> 'define_constants',
 			'core.display_forums_modify_sql'			=> 'query_topic_title',
 			'core.display_forums_modify_forum_rows'		=> 'modify_forum_rows',
 			'core.display_forums_modify_template_vars'	=> 'set_custom_last_post',
+			'core.search_modify_tpl_ary'				=> 'modify_search_results',
 		);
 	}
 
@@ -69,7 +70,7 @@ class listener implements EventSubscriberInterface
 	*/
 	public function define_constants($event)
 	{
-		define('EMPTYPOSTSUBJECTS_LAST_POST_SUBJECT', 0);
+		define('EMPTYPOSTSUBJECTS_POST_SUBJECT', 0);
 		define('EMPTYPOSTSUBJECTS_TOPIC_TITLE', 1);
 		define('EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY', 2);
 	}
@@ -188,7 +189,7 @@ class listener implements EventSubscriberInterface
 			break;
 
 			// always display last post subject
-			case EMPTYPOSTSUBJECTS_LAST_POST_SUBJECT:
+			case EMPTYPOSTSUBJECTS_POST_SUBJECT:
 			default:
 				$last_post_subject = $row['forum_last_post_subject'];
 			break;
@@ -201,6 +202,46 @@ class listener implements EventSubscriberInterface
 		$forum_row['LAST_POST_SUBJECT_TRUNCATED'] = (!$row['forum_password'] && $this->auth->acl_get('f_read', $row['forum_id'])) ? $last_post_subject_truncated : "";
 
 		$event['forum_row'] = $forum_row;
+	}
+
+	/**
+	* Function to modify the title of search results when searching for posts.
+	*
+	* @param	object		$event	The event object
+	* @return	null
+	* @access	public
+	*/
+	public function modify_search_results($event)
+	{
+		// only modify post subject when viewing search results as posts
+		if ($event['show_results'] == 'posts')
+		{
+			$tpl_ary = $event['tpl_ary'];
+			$topic_title = $event['tpl_ary']['TOPIC_TITLE'];
+			$post_subject = $event['tpl_ary']['POST_SUBJECT'];
+
+			switch ($this->config['martin_emptypostsubjects_search'])
+			{
+				// always display topic title
+				case EMPTYPOSTSUBJECTS_TOPIC_TITLE:
+					$search_result_subject = $topic_title;
+				break;
+
+				// display topic title if post subject is empty
+				case EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY:
+					$search_result_subject = (!$post_subject || $post_subject == '') ? $topic_title : $post_subject;
+				break;
+
+				// always display post subject
+				case EMPTYPOSTSUBJECTS_POST_SUBJECT:
+				default:
+					$search_result_subject = $post_subject;
+				break;
+			}
+
+			$tpl_ary['POST_SUBJECT'] = $search_result_subject;
+			$event['tpl_ary'] = $tpl_ary;
+		}
 	}
 
 }

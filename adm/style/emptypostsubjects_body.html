@@ -24,6 +24,16 @@
 				</select>
 			</dd>
 		</dl>
+		<dl>
+			<dt><label for="martin_emptypostsubjects_search">{L_ACP_EMPTYPOSTSUBJECTS_SEARCH}{L_COLON}</label><br /><span>{L_ACP_EMPTYPOSTSUBJECTS_SEARCH_EXPLAIN}</span></dt>
+			<dd>
+				<select name="martin_emptypostsubjects_search" id="martin_emptypostsubjects_search">
+				<!-- BEGIN martin_emptypostsubjects_search_options -->
+					<option value="{martin_emptypostsubjects_search_options.OPTION}"<!-- IF martin_emptypostsubjects_search_options.SELECTED --> selected="selected"<!-- ENDIF -->>{martin_emptypostsubjects_search_options.L_TITLE}</option>
+				<!-- END martin_emptypostsubjects_search_options -->
+				</select>
+			</dd>
+		</dl>
 
 		<p class="submit-buttons">
 			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;

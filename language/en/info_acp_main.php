@@ -27,7 +27,9 @@ $lang = array_merge($lang, array(
 	'ACP_EMPTYPOSTSUBJECTS_QUICK_REPLY_EXPLAIN'										=> 'Empties the \'Subject\' field in the quick reply editor when viewing a topic.',
 	'ACP_EMPTYPOSTSUBJECTS_LAST_POST'												=> 'Last Post link displays',
 	'ACP_EMPTYPOSTSUBJECTS_LAST_POST_EXPLAIN'										=> 'Customize which text the \'Last Post\' link on the board index displays.',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_LAST_POST_SUBJECT			=> 'subject of the last post',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE					=> 'title of the topic that contains the last post',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY	=> 'subject of the last post if it is not empty, topic title otherwise',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT				=> 'subject of the post',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE					=> 'title of the topic that contains the post',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY	=> 'subject of the post if it is not empty, topic title otherwise',
+	'ACP_EMPTYPOSTSUBJECTS_SEARCH'													=> 'Search result titles display',
+	'ACP_EMPTYPOSTSUBJECTS_SEARCH_EXPLAIN'											=> 'Customize which text the titles in the search result display.',
 ));

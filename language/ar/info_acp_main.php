@@ -28,7 +28,9 @@ $lang = array_merge($lang, array(
 	'ACP_EMPTYPOSTSUBJECTS_QUICK_REPLY_EXPLAIN'										=> 'TODO Empties the \'Subject\' field in the quick reply editor when viewing a topic.',
 	'ACP_EMPTYPOSTSUBJECTS_LAST_POST'												=> 'إظهار رابط آخر مُشاركة ',
 	'ACP_EMPTYPOSTSUBJECTS_LAST_POST_EXPLAIN'										=> 'تحديد طريقة إظهار رابط آخر مُشاركة في الصفحة الرئيسية للمنتدى.',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_LAST_POST_SUBJECT			=> 'عنوان آخر مُشاركة',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE					=> 'عنوان الموضوع (الذي يحتوي على آخر مُشاركة)',
-	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY	=> 'عنوان آخر مشاركة, وإذا كان فارغاً يُستبدل بعنوان الموضوع',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT				=> 'TODO subject of the post',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE					=> 'TODO title of the topic that contains the post',
+	'ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY	=> 'TODO subject of the post if it is not empty, topic title otherwise',
+	'ACP_EMPTYPOSTSUBJECTS_SEARCH'													=> 'TODO Search result titles display',
+	'ACP_EMPTYPOSTSUBJECTS_SEARCH_EXPLAIN'											=> 'TODO Customize which text the titles in the search result display.',
 ));
