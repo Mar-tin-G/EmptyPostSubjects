@@ -1,0 +1,10 @@
+services:
+    martin.emptypostsubjects.listener:
+        class: martin\emptypostsubjects\event\listener
+        arguments:
+            - @template
+            - @config
+            - @user
+            - @auth
+        tags:
+            - { name: event.listener }

@@ -1,0 +1,29 @@
+{
+	"name": "martin/emptypostsubjects",
+	"type": "phpbb-extension",
+	"description": "TODO Empties the 'Subject' when replying to a topic, i.e. no more 'Re: <topic title>' subjects for every post. Also empties the 'Subject' if the Quick Reply feature is active. Customize if the Last Post link on the board index displays the subject of the last post, the title of the topic containing the last post, or the post subject if it is not empty and the topic title otherwise.",
+	"homepage": "https://github.com/Martin-G-/EmptyPostSubjects",
+	"version": "1.0.0-beta1",
+	"time": "2015-01-10",
+	"license": "GPL-2.0",
+	"authors": [{
+		"name": "Martin",
+		"email": "martin.g@posteo.de",
+		"role": "Lead Developer"
+	}],
+	"require": {
+		"php": ">=5.3.3",
+		"composer/installers": "~1.0"
+	},
+	"extra": {
+		"display-name": "Empty Post Subjects",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.0-RC2,<3.2.*@dev"
+		},
+		"version-check": {
+			"host": "martin-g-.github.io",
+			"directory": "/versioncheck",
+			"filename": "emptypostsubjects.json"
+		}
+	}
+}
