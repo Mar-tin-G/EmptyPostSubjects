@@ -39,17 +39,17 @@ class listener implements EventSubscriberInterface
 	protected $config;
 
 	/* @var \phpbb\user */
-	protected $user; 
+	protected $user;
 
 	/* @var \phpbb\auth */
-	protected $auth; 
- 
+	protected $auth;
+
 	/**
 	* Constructor
 	*
 	* @param \phpbb\template			$template	Template object
 	* @param \phpbb\config\config		$config
-	* @param \phpbb\user				$user 
+	* @param \phpbb\user				$user
 	* @param \phpbb\auth\auth			$auth
 	*/
 	public function __construct(\phpbb\template\template $template, \phpbb\config\config $config, \phpbb\user $user, \phpbb\auth\auth $auth)
@@ -81,7 +81,7 @@ class listener implements EventSubscriberInterface
 	* @param	object		$event	The event object
 	* @return	null
 	* @access	public
-	*/ 
+	*/
 	public function remove_subject_reply($event)
 	{
 		if ($this->config['martin_emptypostsubjects_empty_reply'])
@@ -107,7 +107,7 @@ class listener implements EventSubscriberInterface
 	* @param	object		$event	The event object
 	* @return	null
 	* @access	public
-	*/ 
+	*/
 	public function remove_subject_quick_reply($event)
 	{
 		if ($this->config['martin_emptypostsubjects_empty_quick_reply'])

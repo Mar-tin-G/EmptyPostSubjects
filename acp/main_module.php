@@ -40,8 +40,8 @@ class main_module
 
 		$template->assign_vars(array(
 			'U_ACTION'								=> $this->u_action,
-			'MARTIN_EMPTYPOSTSUBJECTS_REPLY'		=> $config['martin_emptypostsubjects_empty_reply'], 
-			'MARTIN_EMPTYPOSTSUBJECTS_QUICK_REPLY'	=> $config['martin_emptypostsubjects_empty_quick_reply'], 
+			'MARTIN_EMPTYPOSTSUBJECTS_REPLY'		=> $config['martin_emptypostsubjects_empty_reply'],
+			'MARTIN_EMPTYPOSTSUBJECTS_QUICK_REPLY'	=> $config['martin_emptypostsubjects_empty_quick_reply'],
 		));
 
 		// options for last post

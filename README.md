@@ -1,6 +1,6 @@
 # Empty Post Subjects
 
-[phpBB 3.1] (https://www.phpbb.com/) Extension Empty Post Subjects
+[phpBB 3.1](https://www.phpbb.com/) Extension Empty Post Subjects
 
 ## Description
 
