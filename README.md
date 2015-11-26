@@ -18,7 +18,7 @@ Also modifies the *search result titles* (when displaying search results as post
 * they display the title of the topic containing the found post, or
 * they display the post subject if it is not empty and the topic title otherwise.
 
-This extension merges the previous extensions [EmptySubjectsOnReply] (https://github.com/Martin-G-/EmptySubjectsOnReply) and [CustomLastPost] (https://github.com/Martin-G-/CustomLastPost) into one extension.
+This extension merges the previous extensions [EmptySubjectsOnReply](https://github.com/Mar-tin-G/EmptySubjectsOnReply) and [CustomLastPost](https://github.com/Mar-tin-G/CustomLastPost) into one extension.
 
 ## License
 
