@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Mar-tin-G/EmptyPostSubjects.svg?branch=master)](https://travis-ci.org/Mar-tin-G/EmptyPostSubjects)
+
 # Empty Post Subjects
 
 [phpBB 3.1](https://www.phpbb.com/) Extension Empty Post Subjects
