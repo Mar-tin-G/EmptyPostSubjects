@@ -11,14 +11,14 @@ namespace martin\emptypostsubjects\acp;
 
 class main_module
 {
-	var $u_action;
+	public $u_action;
+	public $tpl_name;
+	public $page_title;
 
-	function main($id, $mode)
+	public function main($id, $mode)
 	{
-		global $db, $user, $auth, $template, $cache, $request;
-		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
+		global $user, $template, $request, $config;
 
-		$user->add_lang('acp/common');
 		$this->tpl_name = 'emptypostsubjects_body';
 		$this->page_title = $user->lang('ACP_EMPTYPOSTSUBJECTS_TITLE');
 		add_form_key('martin/emptypostsubjects');
@@ -27,15 +27,16 @@ class main_module
 		{
 			if (!check_form_key('martin/emptypostsubjects'))
 			{
+				$user->add_lang('acp/common');
 				trigger_error('FORM_INVALID');
 			}
 
-			$config->set('martin_emptypostsubjects_empty_reply', $request->variable('martin_emptypostsubjects_empty_reply', 0));
-			$config->set('martin_emptypostsubjects_empty_quick_reply', $request->variable('martin_emptypostsubjects_empty_quick_reply', 0));
-			$config->set('martin_emptypostsubjects_last_post', $request->variable('martin_emptypostsubjects_last_post', 0));
-			$config->set('martin_emptypostsubjects_search', $request->variable('martin_emptypostsubjects_search', 0));
+			$config->set('martin_emptypostsubjects_empty_reply',		$request->variable('martin_emptypostsubjects_empty_reply', 0));
+			$config->set('martin_emptypostsubjects_empty_quick_reply',	$request->variable('martin_emptypostsubjects_empty_quick_reply', 0));
+			$config->set('martin_emptypostsubjects_last_post',			$request->variable('martin_emptypostsubjects_last_post', 0));
+			$config->set('martin_emptypostsubjects_search',				$request->variable('martin_emptypostsubjects_search', 0));
 
-			trigger_error($user->lang('ACP_EMPTYPOSTSUBJECTS_SETTING_SAVED') . adm_back_link($this->u_action));
+			trigger_error($user->lang('ACP_EMPTYPOSTSUBJECTS_SETTING_SAVED'). adm_back_link($this->u_action));
 		}
 
 		$template->assign_vars(array(

@@ -12,6 +12,10 @@ namespace martin\emptypostsubjects\event;
 /**
 * @ignore
 */
+use \phpbb\template\template;
+use \phpbb\config\config;
+use \phpbb\user;
+use \phpbb\auth\auth;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -32,27 +36,27 @@ class listener implements EventSubscriberInterface
 		);
 	}
 
-	/* @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
-	/* @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
-	/* @var \phpbb\user */
+	/** @var user */
 	protected $user;
 
-	/* @var \phpbb\auth */
+	/** @var auth */
 	protected $auth;
 
 	/**
 	* Constructor
 	*
-	* @param \phpbb\template			$template	Template object
-	* @param \phpbb\config\config		$config
-	* @param \phpbb\user				$user
-	* @param \phpbb\auth\auth			$auth
+	* @param template	$template
+	* @param config		$config
+	* @param user		$user
+	* @param auth		$auth
 	*/
-	public function __construct(\phpbb\template\template $template, \phpbb\config\config $config, \phpbb\user $user, \phpbb\auth\auth $auth)
+	public function __construct(template $template, config $config, user $user, auth $auth)
 	{
 		$this->template = $template;
 		$this->config = $config;
@@ -122,7 +126,7 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	* Function to join the topics table to the forum query and fetches the topic title
+	* Function to join the topics table to the forum query and fetch the topic title
 	* of the topic that contains the last post in this forum.
 	*
 	* @param	object		$event	The event object
@@ -243,5 +247,4 @@ class listener implements EventSubscriberInterface
 			$event['tpl_ary'] = $tpl_ary;
 		}
 	}
-
 }

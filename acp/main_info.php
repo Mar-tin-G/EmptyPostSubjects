@@ -11,7 +11,7 @@ namespace martin\emptypostsubjects\acp;
 
 class main_info
 {
-	function module()
+	public function module()
 	{
 		return array(
 			'filename'	=> '\martin\emptypostsubjects\acp\main_module',
