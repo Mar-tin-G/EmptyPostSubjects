@@ -46,37 +46,21 @@ class main_module
 		));
 
 		// options for last post
-		$template->assign_block_vars('martin_emptypostsubjects_last_post_options', array(
-			'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT),
-			'OPTION'	=> EMPTYPOSTSUBJECTS_POST_SUBJECT,
-			'SELECTED'	=> $config['martin_emptypostsubjects_last_post'] == EMPTYPOSTSUBJECTS_POST_SUBJECT,
-		));
-		$template->assign_block_vars('martin_emptypostsubjects_last_post_options', array(
-			'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE),
-			'OPTION'	=> EMPTYPOSTSUBJECTS_TOPIC_TITLE,
-			'SELECTED'	=> $config['martin_emptypostsubjects_last_post'] == EMPTYPOSTSUBJECTS_TOPIC_TITLE,
-		));
-		$template->assign_block_vars('martin_emptypostsubjects_last_post_options', array(
-			'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY),
-			'OPTION'	=> EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY,
-			'SELECTED'	=> $config['martin_emptypostsubjects_last_post'] == EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY,
-		));
+		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value) {
+			$template->assign_block_vars('martin_emptypostsubjects_last_post_options', array(
+				'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . $value),
+				'OPTION'	=> $value,
+				'SELECTED'	=> $config['martin_emptypostsubjects_last_post'] == $value,
+			));
+		}
 
 		// options for search
-		$template->assign_block_vars('martin_emptypostsubjects_search_options', array(
-			'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT),
-			'OPTION'	=> EMPTYPOSTSUBJECTS_POST_SUBJECT,
-			'SELECTED'	=> $config['martin_emptypostsubjects_search'] == EMPTYPOSTSUBJECTS_POST_SUBJECT,
-		));
-		$template->assign_block_vars('martin_emptypostsubjects_search_options', array(
-			'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_TOPIC_TITLE),
-			'OPTION'	=> EMPTYPOSTSUBJECTS_TOPIC_TITLE,
-			'SELECTED'	=> $config['martin_emptypostsubjects_search'] == EMPTYPOSTSUBJECTS_TOPIC_TITLE,
-		));
-		$template->assign_block_vars('martin_emptypostsubjects_search_options', array(
-			'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY),
-			'OPTION'	=> EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY,
-			'SELECTED'	=> $config['martin_emptypostsubjects_search'] == EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY,
-		));
+		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value) {
+			$template->assign_block_vars('martin_emptypostsubjects_search_options', array(
+				'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . $value),
+				'OPTION'	=> $value,
+				'SELECTED'	=> $config['martin_emptypostsubjects_search'] == $value,
+			));
+		}
 	}
 }

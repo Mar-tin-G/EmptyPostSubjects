@@ -30,8 +30,8 @@ class listener implements EventSubscriberInterface
 			'core.posting_modify_template_vars'			=> 'remove_subject_reply',
 			'core.viewtopic_modify_page_title'			=> 'remove_subject_quick_reply',
 			'core.display_forums_modify_sql'			=> 'query_topic_title',
-			'core.display_forums_modify_forum_rows'		=> 'modify_forum_rows',
-			'core.display_forums_modify_template_vars'	=> 'set_custom_last_post',
+			'core.display_forums_modify_forum_rows'		=> 'set_parent_topic_title',
+			'core.display_forums_before'				=> 'set_custom_last_post',
 			'core.search_modify_tpl_ary'				=> 'modify_search_results',
 		);
 	}
@@ -141,7 +141,7 @@ class listener implements EventSubscriberInterface
 			'FROM'	=> array(TOPICS_TABLE => 't'),
 			'ON'	=> "f.forum_last_post_id = t.topic_last_post_id AND t.topic_moved_id = 0"
 		);
-		$sql_ary['SELECT'] .= ', t.topic_title';
+		$sql_ary['SELECT'] .= ', t.topic_title AS last_post_topic_title';
 
 		$event['sql_ary'] = $sql_ary;
 	}
@@ -154,7 +154,7 @@ class listener implements EventSubscriberInterface
 	* @return	null
 	* @access	public
 	*/
-	public function modify_forum_rows($event)
+	public function set_parent_topic_title($event)
 	{
 		$forum_rows = $event['forum_rows'];
 		$parent_id = $event['parent_id'];
@@ -162,7 +162,7 @@ class listener implements EventSubscriberInterface
 
 		if ($forum_rows[$parent_id]['forum_id_last_post'] == $row['forum_id'])
 		{
-			$forum_rows[$parent_id]['topic_title'] = $row['topic_title'];
+			$forum_rows[$parent_id]['last_post_topic_title'] = $row['last_post_topic_title'];
 		}
 
 		$event['forum_rows'] = $forum_rows;
@@ -177,35 +177,31 @@ class listener implements EventSubscriberInterface
 	*/
 	public function set_custom_last_post($event)
 	{
-		$forum_row = $event['forum_row'];
-		$row = $event['row'];
+		$forum_rows = $event['forum_rows'];
 
-		switch ($this->config['martin_emptypostsubjects_last_post'])
+		foreach ($forum_rows as $row)
 		{
-			// always display topic title
-			case EMPTYPOSTSUBJECTS_TOPIC_TITLE:
-				$last_post_subject = $row['topic_title'];
-			break;
+			switch ($this->config['martin_emptypostsubjects_last_post'])
+			{
+				// always display topic title
+				case EMPTYPOSTSUBJECTS_TOPIC_TITLE:
+					$forum_rows[$row['forum_id']]['forum_last_post_subject'] = $row['last_post_topic_title'];
+				break;
 
-			// display topic title if last post subject is empty
-			case EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY:
-				$last_post_subject = (!$row['forum_last_post_subject'] || $row['forum_last_post_subject'] == '') ? $row['topic_title'] : $row['forum_last_post_subject'];
-			break;
+				// display topic title if last post subject is empty
+				case EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY:
+					$forum_rows[$row['forum_id']]['forum_last_post_subject'] = (!$row['forum_last_post_subject'] || $row['forum_last_post_subject'] == '') ? $row['last_post_topic_title'] : $row['forum_last_post_subject'];
+				break;
 
-			// always display last post subject
-			case EMPTYPOSTSUBJECTS_POST_SUBJECT:
-			default:
-				$last_post_subject = $row['forum_last_post_subject'];
-			break;
+				// always display last post subject
+				case EMPTYPOSTSUBJECTS_POST_SUBJECT:
+				default:
+					$forum_rows[$row['forum_id']]['forum_last_post_subject'] = $row['forum_last_post_subject'];
+				break;
+			}
 		}
 
-		$last_post_subject_truncated = truncate_string(censor_text($last_post_subject), 30, 255, false, $this->user->lang['ELLIPSIS']);
-
-		$forum_row['S_DISPLAY_SUBJECT'] = ($last_post_subject && $this->config['display_last_subject'] && !$row['forum_password'] && $this->auth->acl_get('f_read', $row['forum_id'])) ? true : false;
-		$forum_row['LAST_POST_SUBJECT'] = (!$row['forum_password'] && $this->auth->acl_get('f_read', $row['forum_id'])) ? censor_text($last_post_subject) : "";
-		$forum_row['LAST_POST_SUBJECT_TRUNCATED'] = (!$row['forum_password'] && $this->auth->acl_get('f_read', $row['forum_id'])) ? $last_post_subject_truncated : "";
-
-		$event['forum_row'] = $forum_row;
+		$event['forum_rows'] = $forum_rows;
 	}
 
 	/**
