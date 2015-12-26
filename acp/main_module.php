@@ -46,7 +46,8 @@ class main_module
 		));
 
 		// options for last post
-		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value) {
+		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value)
+		{
 			$template->assign_block_vars('martin_emptypostsubjects_last_post_options', array(
 				'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . $value),
 				'OPTION'	=> $value,
@@ -55,7 +56,8 @@ class main_module
 		}
 
 		// options for search
-		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value) {
+		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value)
+		{
 			$template->assign_block_vars('martin_emptypostsubjects_search_options', array(
 				'L_TITLE'	=> $user->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . $value),
 				'OPTION'	=> $value,
