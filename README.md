@@ -19,6 +19,8 @@ Modifies the text of the *Last Post* link on the board index or when viewing a f
 * it displays the title of the topic containing the last post, or
 * it displays the post subject if it is not empty and the topic title otherwise.
 
+Note: the following option must be enabled to display *Last Post* links: ACP > *Board Configuration* > *Board Features* > *Display subject of last added post on forum list*
+
 Also modifies the *search result titles* (when displaying search results as posts) to handle empty post subjects. Possible settings in ACP:
 * The *search result titles* display the subject of the post found by the search (default, this conforms to the phpBB default),
 * they display the title of the topic containing the found post, or
@@ -31,6 +33,10 @@ This extension merges the previous extensions [EmptySubjectsOnReply](https://git
 ### v1.0.0-beta1
 
 Initial release.
+
+### v1.0.0-beta2
+
+Code refactoring, unit tests - no functional changes.
 
 ## Installation Instructions
 
