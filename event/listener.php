@@ -14,8 +14,6 @@ namespace martin\emptypostsubjects\event;
 */
 use \phpbb\template\template;
 use \phpbb\config\config;
-use \phpbb\user;
-use \phpbb\auth\auth;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -42,26 +40,16 @@ class listener implements EventSubscriberInterface
 	/** @var config */
 	protected $config;
 
-	/** @var user */
-	protected $user;
-
-	/** @var auth */
-	protected $auth;
-
 	/**
 	* Constructor
 	*
 	* @param template	$template
 	* @param config		$config
-	* @param user		$user
-	* @param auth		$auth
 	*/
-	public function __construct(template $template, config $config, user $user, auth $auth)
+	public function __construct(template $template, config $config)
 	{
 		$this->template = $template;
 		$this->config = $config;
-		$this->user = $user;
-		$this->auth = $auth;
 	}
 
 	/**
