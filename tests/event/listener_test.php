@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB Extension - martin emptypostsubjects
-* @copyright (c) 2015 Martin ( https://github.com/Mar-tin-G )
+* @copyright (c) 2018 Martin ( https://github.com/Mar-tin-G )
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
@@ -302,14 +302,14 @@ class listener_test extends \phpbb_test_case
 						'topic_title'			=> 'some topic title that has NOT to be replaced',
 					),
 					2 => array(
-						'forum_id'		=> 2,
-						'parent_id'		=> 1,
-						'topic_title'	=> 'topic title',
+						'forum_id'				=> 2,
+						'parent_id'				=> 1,
+						'topic_title'			=> 'topic title',
 					),
 					3 => array(
-						'forum_id'		=> 3,
-						'parent_id'		=> 1,
-						'topic_title'	=> 'topic title of some unrelated forum',
+						'forum_id'				=> 3,
+						'parent_id'				=> 1,
+						'topic_title'			=> 'topic title of some unrelated forum',
 					),
 				),
 				array(
@@ -320,14 +320,14 @@ class listener_test extends \phpbb_test_case
 						'topic_title'			=> 'some topic title that has NOT to be replaced',
 					),
 					2 => array(
-						'forum_id'		=> 2,
-						'parent_id'		=> 1,
-						'topic_title'	=> 'topic title',
+						'forum_id'				=> 2,
+						'parent_id'				=> 1,
+						'topic_title'			=> 'topic title',
 					),
 					3 => array(
-						'forum_id'		=> 3,
-						'parent_id'		=> 1,
-						'topic_title'	=> 'topic title of some unrelated forum',
+						'forum_id'				=> 3,
+						'parent_id'				=> 1,
+						'topic_title'			=> 'topic title of some unrelated forum',
 					),
 				),
 			),
