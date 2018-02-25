@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB Extension - martin emptypostsubjects
-* @copyright (c) 2015 Martin ( https://github.com/Mar-tin-G )
+* @copyright (c) 2018 Martin ( https://github.com/Mar-tin-G )
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
@@ -105,7 +105,7 @@ class listener implements EventSubscriberInterface
 		if ($this->config['martin_emptypostsubjects_empty_quick_reply'])
 		{
 			// since the SUBJECT template variable is used only for the Quick Reply subject
-			// in the template viewtopic_body.html, we can safely overwrite the value of
+			// in the template quickreply_editor.html, we can safely overwrite the value of
 			// this template variable without checking if Quick Reply is active.
 			$this->template->assign_vars(array(
 				'SUBJECT'	=> '',

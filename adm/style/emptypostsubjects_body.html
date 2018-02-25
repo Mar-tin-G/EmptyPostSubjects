@@ -1,23 +1,24 @@
 <!-- INCLUDE overall_header.html -->
 
-<h1>{L_SETTINGS}</h1>
+<h1>{L_ACP_EMPTYPOSTSUBJECTS_TITLE}</h1>
 
 <form id="acp_board" method="post" action="{U_ACTION}">
 	<fieldset>
+		<legend>{L_SETTINGS}</legend>
 		<dl>
 			<dt><label for="martin_emptypostsubjects_empty_reply">{L_ACP_EMPTYPOSTSUBJECTS_REPLY}{L_COLON}</label><br /><span>{L_ACP_EMPTYPOSTSUBJECTS_REPLY_EXPLAIN}</span></dt>
-			<dd><label><input type="radio" id="martin_emptypostsubjects_empty_reply" name="martin_emptypostsubjects_empty_reply" value="1" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_REPLY == 1 --> checked="checked"<!-- ENDIF--> />{L_YES}</label>
-				<label><input type="radio" id="martin_emptypostsubjects_empty_reply" name="martin_emptypostsubjects_empty_reply" value="0" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_REPLY == 0 --> checked="checked"<!-- ENDIF--> /> {L_NO}</label></dd>
+			<dd><label><input type="radio" name="martin_emptypostsubjects_empty_reply" value="1" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_REPLY == 1 --> checked="checked"<!-- ENDIF--> />{L_YES}</label>
+				<label><input type="radio" name="martin_emptypostsubjects_empty_reply" value="0" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_REPLY == 0 --> checked="checked"<!-- ENDIF--> /> {L_NO}</label></dd>
 		</dl>
 		<dl>
 			<dt><label for="martin_emptypostsubjects_empty_quick_reply">{L_ACP_EMPTYPOSTSUBJECTS_QUICK_REPLY}{L_COLON}</label><br /><span>{L_ACP_EMPTYPOSTSUBJECTS_QUICK_REPLY_EXPLAIN}</span></dt>
-			<dd><label><input type="radio" id="martin_emptypostsubjects_empty_quick_reply" name="martin_emptypostsubjects_empty_quick_reply" value="1" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_QUICK_REPLY == 1 --> checked="checked"<!-- ENDIF--> />{L_YES}</label>
-				<label><input type="radio" id="martin_emptypostsubjects_empty_quick_reply" name="martin_emptypostsubjects_empty_quick_reply" value="0" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_QUICK_REPLY == 0 --> checked="checked"<!-- ENDIF--> /> {L_NO}</label></dd>
+			<dd><label><input type="radio" name="martin_emptypostsubjects_empty_quick_reply" value="1" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_QUICK_REPLY == 1 --> checked="checked"<!-- ENDIF--> />{L_YES}</label>
+				<label><input type="radio" name="martin_emptypostsubjects_empty_quick_reply" value="0" class="radio"<!-- IF MARTIN_EMPTYPOSTSUBJECTS_QUICK_REPLY == 0 --> checked="checked"<!-- ENDIF--> /> {L_NO}</label></dd>
 		</dl>
 		<dl>
 			<dt><label for="martin_emptypostsubjects_last_post">{L_ACP_EMPTYPOSTSUBJECTS_LAST_POST}{L_COLON}</label><br /><span>{L_ACP_EMPTYPOSTSUBJECTS_LAST_POST_EXPLAIN}</span></dt>
 			<dd>
-				<select name="martin_emptypostsubjects_last_post" id="martin_emptypostsubjects_last_post">
+				<select name="martin_emptypostsubjects_last_post">
 				<!-- BEGIN martin_emptypostsubjects_last_post_options -->
 					<option value="{martin_emptypostsubjects_last_post_options.OPTION}"<!-- IF martin_emptypostsubjects_last_post_options.SELECTED --> selected="selected"<!-- ENDIF -->>{martin_emptypostsubjects_last_post_options.L_TITLE}</option>
 				<!-- END martin_emptypostsubjects_last_post_options -->
@@ -27,18 +28,18 @@
 		<dl>
 			<dt><label for="martin_emptypostsubjects_search">{L_ACP_EMPTYPOSTSUBJECTS_SEARCH}{L_COLON}</label><br /><span>{L_ACP_EMPTYPOSTSUBJECTS_SEARCH_EXPLAIN}</span></dt>
 			<dd>
-				<select name="martin_emptypostsubjects_search" id="martin_emptypostsubjects_search">
+				<select name="martin_emptypostsubjects_search">
 				<!-- BEGIN martin_emptypostsubjects_search_options -->
 					<option value="{martin_emptypostsubjects_search_options.OPTION}"<!-- IF martin_emptypostsubjects_search_options.SELECTED --> selected="selected"<!-- ENDIF -->>{martin_emptypostsubjects_search_options.L_TITLE}</option>
 				<!-- END martin_emptypostsubjects_search_options -->
 				</select>
 			</dd>
 		</dl>
+	</fieldset>
 
-		<p class="submit-buttons">
-			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
-			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
-		</p>
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
 
 		{S_FORM_TOKEN}
 	</fieldset>
