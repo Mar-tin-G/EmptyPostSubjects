@@ -16,7 +16,7 @@ class main_info
 		return array(
 			'filename'	=> '\martin\emptypostsubjects\acp\main_module',
 			'title'		=> 'ACP_EMPTYPOSTSUBJECTS_TITLE',
-			'version'	=> '1.0.1',
+			'version'	=> '1.1.0',
 			'modes'		=> array(
 				'settings'	=> array(
 					'title'	=> 'ACP_EMPTYPOSTSUBJECTS_SETTINGS',

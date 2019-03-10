@@ -2,6 +2,12 @@
 
 ## Version 1.x (for phpBB 3.2)
 
+### v1.1.0 - 2019-03-10
+
+Add highlighting to topic titles in search results, thanks to Senky!
+
+Adapt to changes from phpBB 3.2.5.
+
 ### v1.0.1 - 2019-03-10
 
 Apply first phpBB Extension Customisations Team feedback for extension validation - no functional changes.
