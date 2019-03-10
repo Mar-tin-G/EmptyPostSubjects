@@ -1,8 +1,8 @@
 services:
-  martin.emptypostsubjects.listener:
-    class: martin\emptypostsubjects\event\listener
-    arguments:
-      - @template
-      - @config
-    tags:
-      - { name: event.listener }
+    martin.emptypostsubjects.listener:
+        class: martin\emptypostsubjects\event\listener
+        arguments:
+            - '@template'
+            - '@config'
+        tags:
+            - { name: event.listener }

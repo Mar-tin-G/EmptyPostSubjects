@@ -3,9 +3,9 @@
 	"type": "phpbb-extension",
 	"description": "Empties the 'Subject' when (quick) replying to a topic. Modifies the text of the Last Post link on the board index or when viewing a forum to handle empty post subjects. Also modifies the search result titles to handle empty post subjects.",
 	"homepage": "https://github.com/Mar-tin-G/EmptyPostSubjects",
-	"version": "1.0.0",
-	"time": "2018-02-25",
-	"license": "GPL-2.0",
+	"version": "1.0.1",
+	"time": "2019-03-10",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "Martin",

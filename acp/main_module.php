@@ -9,6 +9,11 @@
 
 namespace martin\emptypostsubjects\acp;
 
+/**
+* @ignore
+*/
+use martin\emptypostsubjects\constants;
+
 class main_module
 {
 	public $u_action;
@@ -30,7 +35,6 @@ class main_module
 		{
 			if (!check_form_key('martin/emptypostsubjects'))
 			{
-				$lang->add_lang('acp/common');
 				trigger_error('FORM_INVALID', E_USER_WARNING);
 			}
 
@@ -49,7 +53,7 @@ class main_module
 		));
 
 		// options for last post
-		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value)
+		foreach (array(constants::POST_SUBJECT, constants::TOPIC_TITLE, constants::POST_SUBJECT_IF_NOT_EMPTY) as $value)
 		{
 			$template->assign_block_vars('martin_emptypostsubjects_last_post_options', array(
 				'L_TITLE'	=> $lang->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . $value),
@@ -59,7 +63,7 @@ class main_module
 		}
 
 		// options for search
-		foreach (array(EMPTYPOSTSUBJECTS_POST_SUBJECT, EMPTYPOSTSUBJECTS_TOPIC_TITLE, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY) as $value)
+		foreach (array(constants::POST_SUBJECT, constants::TOPIC_TITLE, constants::POST_SUBJECT_IF_NOT_EMPTY) as $value)
 		{
 			$template->assign_block_vars('martin_emptypostsubjects_search_options', array(
 				'L_TITLE'	=> $lang->lang('ACP_EMPTYPOSTSUBJECTS_OPTION_' . $value),
