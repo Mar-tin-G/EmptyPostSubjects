@@ -71,7 +71,6 @@ class listener_test extends \phpbb_test_case
 	public function test_getSubscribedEvents()
 	{
 		$this->assertEquals(array(
-			'core.user_setup',
 			'core.posting_modify_template_vars',
 			'core.viewtopic_modify_page_title',
 			'core.display_forums_modify_sql',
@@ -79,23 +78,6 @@ class listener_test extends \phpbb_test_case
 			'core.display_forums_before',
 			'core.search_modify_tpl_ary',
 		), array_keys(\martin\emptypostsubjects\event\listener::getSubscribedEvents()));
-	}
-
-	/**
-	* Test the core.user_setup event
-	*/
-	public function test_define_constants()
-	{
-		$this->set_listener();
-
-		$dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
-		$dispatcher->addListener('core.user_setup', array($this->listener, 'define_constants'));
-
-		$dispatcher->dispatch('core.user_setup');
-
-		$this->assertEquals(0, EMPTYPOSTSUBJECTS_POST_SUBJECT);
-		$this->assertEquals(1, EMPTYPOSTSUBJECTS_TOPIC_TITLE);
-		$this->assertEquals(2, EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY);
 	}
 
 	/**

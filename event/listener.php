@@ -14,6 +14,7 @@ namespace martin\emptypostsubjects\event;
 */
 use \phpbb\template\template;
 use \phpbb\config\config;
+use martin\emptypostsubjects\constants;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -24,7 +25,6 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.user_setup'							=> 'define_constants',
 			'core.posting_modify_template_vars'			=> 'remove_subject_reply',
 			'core.viewtopic_modify_page_title'			=> 'remove_subject_quick_reply',
 			'core.display_forums_modify_sql'			=> 'query_topic_title',
@@ -50,21 +50,6 @@ class listener implements EventSubscriberInterface
 	{
 		$this->template = $template;
 		$this->config = $config;
-	}
-
-	/**
-	* Define some constants that are needed for this extension. This function is called
-	* early on every page by using the event 'core.user_setup'.
-	*
-	* @param	object		$event	The event object
-	* @return	null
-	* @access	public
-	*/
-	public function define_constants($event)
-	{
-		define('EMPTYPOSTSUBJECTS_POST_SUBJECT', 0);
-		define('EMPTYPOSTSUBJECTS_TOPIC_TITLE', 1);
-		define('EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY', 2);
 	}
 
 	/**
@@ -172,17 +157,17 @@ class listener implements EventSubscriberInterface
 			switch ($this->config['martin_emptypostsubjects_last_post'])
 			{
 				// always display topic title
-				case EMPTYPOSTSUBJECTS_TOPIC_TITLE:
+				case constants::TOPIC_TITLE:
 					$forum_rows[$row['forum_id']]['forum_last_post_subject'] = $row['last_post_topic_title'];
 				break;
 
 				// display topic title if last post subject is empty
-				case EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY:
+				case constants::POST_SUBJECT_IF_NOT_EMPTY:
 					$forum_rows[$row['forum_id']]['forum_last_post_subject'] = (!$row['forum_last_post_subject'] || $row['forum_last_post_subject'] == '') ? $row['last_post_topic_title'] : $row['forum_last_post_subject'];
 				break;
 
 				// always display last post subject
-				case EMPTYPOSTSUBJECTS_POST_SUBJECT:
+				case constants::POST_SUBJECT:
 				default:
 					$forum_rows[$row['forum_id']]['forum_last_post_subject'] = $row['forum_last_post_subject'];
 				break;
@@ -211,17 +196,17 @@ class listener implements EventSubscriberInterface
 			switch ($this->config['martin_emptypostsubjects_search'])
 			{
 				// always display topic title
-				case EMPTYPOSTSUBJECTS_TOPIC_TITLE:
+				case constants::TOPIC_TITLE:
 					$search_result_subject = $topic_title;
 				break;
 
 				// display topic title if post subject is empty
-				case EMPTYPOSTSUBJECTS_POST_SUBJECT_IF_NOT_EMPTY:
+				case constants::POST_SUBJECT_IF_NOT_EMPTY:
 					$search_result_subject = (!$post_subject || $post_subject == '') ? $topic_title : $post_subject;
 				break;
 
 				// always display post subject
-				case EMPTYPOSTSUBJECTS_POST_SUBJECT:
+				case constants::POST_SUBJECT:
 				default:
 					$search_result_subject = $post_subject;
 				break;
