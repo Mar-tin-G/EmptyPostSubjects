@@ -76,6 +76,7 @@ class listener_test extends \phpbb_test_case
 			'core.display_forums_modify_sql',
 			'core.display_forums_modify_forum_rows',
 			'core.display_forums_before',
+			'core.search_modify_rowset',
 			'core.search_modify_tpl_ary',
 		), array_keys(\martin\emptypostsubjects\event\listener::getSubscribedEvents()));
 	}
@@ -442,6 +443,39 @@ class listener_test extends \phpbb_test_case
 	}
 
 	/**
+	* Data set for test_get_search_hilit
+	*
+	* @return array Array of test data
+	*/
+	public function get_search_hilit_data()
+	{
+		return array(
+			'get hilit' => array(
+				'needle',
+			),
+		);
+	}
+
+	/**
+	* Test the core.search_modify_rowset event
+	*
+	* @dataProvider get_search_hilit_data
+	*/
+	public function test_get_search_hilit($hilit)
+	{
+		$this->set_listener();
+
+		$dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
+		$dispatcher->addListener('core.search_modify_rowset', array($this->listener, 'get_search_hilit'));
+
+		$event_data = array('hilit');
+		$event = new \phpbb\event\data(compact($event_data));
+		$dispatcher->dispatch('core.search_modify_rowset', $event);
+
+		$this->assertEquals(\PHPUnit\Framework\Assert::readAttribute($this->listener, "hilit"), $hilit);
+	}
+
+	/**
 	* Data set for test_modify_search_results
 	*
 	* @return array Array of test data
@@ -507,6 +541,19 @@ class listener_test extends \phpbb_test_case
 					'TOPIC_TITLE'	=> 'topic title',
 				),
 			),
+			'topic title supports highlighting' => array(
+				'posts',
+				1,
+				array(
+					'POST_SUBJECT'	=> 'post subject',
+					'TOPIC_TITLE'	=> 'topic needle title',
+				),
+				array(
+					'POST_SUBJECT'	=> 'topic <span class="posthilit">needle</span> title',
+					'TOPIC_TITLE'	=> 'topic needle title',
+				),
+				'needle',
+			),
 		);
 	}
 
@@ -515,7 +562,7 @@ class listener_test extends \phpbb_test_case
 	*
 	* @dataProvider modify_search_results_data
 	*/
-	public function test_modify_search_results($show_results, $option, $tpl_ary, $expected)
+	public function test_modify_search_results($show_results, $option, $tpl_ary, $expected, $hilit = null)
 	{
 		$this->set_listener();
 
@@ -523,6 +570,14 @@ class listener_test extends \phpbb_test_case
 
 		$dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
 		$dispatcher->addListener('core.search_modify_tpl_ary', array($this->listener, 'modify_search_results'));
+
+		if ($hilit !== null)
+		{
+			$dispatcher->addListener('core.search_modify_rowset', array($this->listener, 'get_search_hilit'));
+			$event_data = array('hilit');
+			$event = new \phpbb\event\data(compact($event_data));
+			$dispatcher->dispatch('core.search_modify_rowset', $event);
+		}
 
 		$event_data = array('show_results', 'tpl_ary');
 		$event = new \phpbb\event\data(compact($event_data));

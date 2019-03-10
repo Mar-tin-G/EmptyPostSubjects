@@ -30,6 +30,7 @@ class listener implements EventSubscriberInterface
 			'core.display_forums_modify_sql'			=> 'query_topic_title',
 			'core.display_forums_modify_forum_rows'		=> 'set_parent_topic_title',
 			'core.display_forums_before'				=> 'set_custom_last_post',
+			'core.search_modify_rowset'					=> 'get_search_hilit',
 			'core.search_modify_tpl_ary'				=> 'modify_search_results',
 		);
 	}
@@ -39,6 +40,9 @@ class listener implements EventSubscriberInterface
 
 	/** @var config */
 	protected $config;
+
+	/** @var hilit */
+	protected $hilit;
 
 	/**
 	* Constructor
@@ -50,6 +54,7 @@ class listener implements EventSubscriberInterface
 	{
 		$this->template = $template;
 		$this->config = $config;
+		$this->hilit = '';
 	}
 
 	/**
@@ -178,6 +183,18 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
+	* Function to store the search highlight for later use.
+	*
+	* @param	object		$event	The event object
+	* @return	null
+	* @access	public
+	*/
+	public function get_search_hilit($event)
+	{
+		$this->hilit = $event['hilit'];
+	}
+
+	/**
 	* Function to modify the title of search results when searching for posts.
 	*
 	* @param	object		$event	The event object
@@ -197,12 +214,12 @@ class listener implements EventSubscriberInterface
 			{
 				// always display topic title
 				case constants::TOPIC_TITLE:
-					$search_result_subject = $topic_title;
+					$search_result_subject = $this->highlight($topic_title, $this->hilit);
 				break;
 
 				// display topic title if post subject is empty
 				case constants::POST_SUBJECT_IF_NOT_EMPTY:
-					$search_result_subject = (!$post_subject || $post_subject == '') ? $topic_title : $post_subject;
+					$search_result_subject = (!$post_subject || $post_subject == '') ? $this->highlight($topic_title, $this->hilit) : $post_subject;
 				break;
 
 				// always display post subject
@@ -215,5 +232,18 @@ class listener implements EventSubscriberInterface
 			$tpl_ary['POST_SUBJECT'] = $search_result_subject;
 			$event['tpl_ary'] = $tpl_ary;
 		}
+	}
+
+	/**
+	* Function to highlight the given "hilit" string within the given text.
+	*
+	* @param	string		$text	The text which contains the string to highlight
+	* @param	string		$hilit	The string to highlight
+	* @return	string				The text with the highlighted string
+	* @access	private
+	*/
+	private function highlight($text, $hilit)
+	{
+		return preg_replace('#(?!<.*)(?<!\w)(' . $hilit . ')(?!\w|[^<>]*(?:</s(?:cript|tyle))?>)#isu', '<span class="posthilit">$1</span>', $text);
 	}
 }
