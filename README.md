@@ -1,6 +1,6 @@
 # phpBB Empty Post Subjects extension
 
-This is the repository for the development of the [phpBB 3.2](https://www.phpbb.com/) "Empty Post Subjects" Extension.
+This is the repository for the development of the [phpBB](https://www.phpbb.com/) "Empty Post Subjects" Extension.
 
 [![Build Status](https://travis-ci.org/Mar-tin-G/EmptyPostSubjects.svg?branch=master)](https://travis-ci.org/Mar-tin-G/EmptyPostSubjects)
 
