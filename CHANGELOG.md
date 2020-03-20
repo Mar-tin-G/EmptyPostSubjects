@@ -1,6 +1,10 @@
 # Changelog
 
-## Version 1.x (for phpBB 3.2)
+## Version 1.x (for phpBB 3.2/phpBB 3.3)
+
+### v1.1.1 - 2020-03-20
+
+Release for phpBB 3.3 - no functional changes.
 
 ### v1.1.0 - 2019-03-10
 
